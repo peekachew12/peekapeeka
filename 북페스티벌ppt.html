@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#263f34" />
+  <meta name="description" content="2027 천안시 북페스티벌 행사 기획 제안 - 책 너머, 즐거움이 펼쳐지다" />
+  <title>2027 천안시 북페스티벌 · 웹 프레젠테이션</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app" id="app">
+    <header class="topbar">
+      <a href="#slide-1" id="brand" class="brand" aria-label="첫 슬라이드로 이동"><span class="brand-mark">✳</span><span>CHEONAN <strong>BOOK FESTIVAL</strong><small>2027 · PROPOSAL</small></span></a>
+      <div class="topbar-center"><span class="eyebrow" id="sectionTag">INTRODUCTION</span><span class="header-divider"></span><span class="header-title" id="headerTitle">책 너머, 즐거움이 펼쳐지다</span></div>
+      <div class="head-actions"><button id="indexToggle" class="header-button" aria-expanded="false" aria-controls="indexPanel" title="전체 목차 (M)"><span class="menu-icon">☷</span><span class="button-label">목차</span></button><button id="fullscreenBtn" class="header-button icon-only" title="전체 화면 (F)" aria-label="전체 화면">⛶</button></div>
+    </header>
+    <div class="progress" aria-hidden="true"><div id="progressFill"></div></div>
+    <main class="stage" id="stage" tabindex="-1" aria-label="슬라이드 프레젠테이션">
+      <div id="slides" class="slides" aria-live="polite"></div>
+      <div class="stage-tools"><button class="tool-chip" id="detailToggle" aria-expanded="false" aria-controls="detailPanel"><span>✦</span> 내용 보기 <span class="shortcut">I</span></button><div class="stage-counter"><span id="currentPage">01</span><span class="divider-small">/</span><span>12</span></div></div>
+    </main>
+    <footer class="bottom-bar"><div class="footer-hint"><span class="desktop-hint">← → 이동 &nbsp;·&nbsp; 스크롤 / 스와이프 &nbsp;·&nbsp; M 목차 &nbsp;·&nbsp; F 전체 화면</span><span class="mobile-hint">좌우로 넘겨 이동하세요</span></div><div class="navigation"><button id="prevBtn" class="nav-button" aria-label="이전 슬라이드"><span>←</span><span class="nav-text">이전</span></button><div class="nav-dots" id="navDots" role="group" aria-label="슬라이드 바로가기"></div><button id="nextBtn" class="nav-button next" aria-label="다음 슬라이드"><span class="nav-text">다음</span><span>→</span></button></div></footer>
+    <aside id="indexPanel" class="index-panel" aria-hidden="true"><div class="drawer-header"><div><span class="panel-eyebrow">EXPLORE THE FESTIVAL</span><h2>전체 슬라이드</h2></div><button class="close-btn" id="closeIndex" aria-label="목차 닫기">×</button></div><div id="indexGrid" class="index-grid"></div><p class="drawer-foot">2027 천안시 북페스티벌 · 행사 기획 제안</p></aside>
+    <aside id="detailPanel" class="detail-panel" aria-hidden="true"><div class="drawer-header"><div><span class="panel-eyebrow" id="detailEyebrow"></span><h2 id="detailTitle"></h2></div><button class="close-btn" id="closeDetail" aria-label="내용 패널 닫기">×</button></div><div class="detail-body"><p class="detail-description" id="detailDescription"></p><div id="detailContent"></div></div><div class="detail-bottom">원본 프레젠테이션 내용 · 모바일 접근성 지원</div></aside>
+    <div id="shade" class="shade" tabindex="-1"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="./script.js" defer></script>
+</body>
+</html>
