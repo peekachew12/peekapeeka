@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f8c948" />
+  <meta name="description" content="교육의 가능성을 기획하고 실행하는 사람의 포트폴리오" />
+  <title>Portfolio | 나의 포트폴리오</title>
+  <style>
+    :root { --bg:#faf9f5; --surface:#fffefa; --ink:#22231f; --sub:#6d6c64; --line:#e6e3d9; --yellow:#ffd34f; --yellow-strong:#f2bd20; --dark:#25251f; --radius:22px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.65; word-break:keep-all; }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; }
+    ::selection { background:#ffe58e; color:#1f1e17; }
+    .wrap { width:min(1140px,calc(100% - 56px)); margin:auto; }
+    .topbar { position:sticky; top:0; z-index:100; background:rgba(250,249,245,.88); backdrop-filter:blur(18px); border-bottom:1px solid rgba(40,40,30,.07); }
+    .nav { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .logo { display:flex; align-items:center; gap:12px; font-weight:850; font-size:17px; letter-spacing:-.5px; white-space:nowrap; }
+    .logo-mark { display:grid; place-items:center; width:38px; height:38px; border-radius:12px; background:var(--yellow); color:#26231b; font-size:18px; font-weight:900; box-shadow:0 4px 12px #f5c93d35; }
+    .navlinks { display:flex; align-items:center; gap:30px; font-size:14px; font-weight:700; color:#66655d; }
+    .navlinks a { transition:color .2s; }
+    .navlinks a:hover, .navlinks a:focus-visible { color:#141410; }
+    .nav-cta { padding:11px 18px; border-radius:100px; background:var(--dark); color:#fff !important; transition:transform .18s,background .18s; }
+    .nav-cta:hover { transform:translateY(-2px); background:#444133; }
+    .hero { padding:94px 0 102px; position:relative; overflow:hidden; }
+    .hero-grid { display:grid; grid-template-columns:1.3fr .7fr; align-items:center; gap:55px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; font-weight:800; letter-spacing:1.9px; color:#6f6226; font-size:12px; text-transform:uppercase; }
+    .eyebrow:before { content:""; display:inline-block; width:21px; height:4px; background:var(--yellow-strong); border-radius:5px; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { font-size:clamp(44px,5.4vw,75px); font-weight:850; line-height:1.23; letter-spacing:-4px; margin:25px 0 26px; }
+    .highlight { position:relative; white-space:nowrap; z-index:0; }
+    .highlight:after { content:""; position:absolute; left:-2px; right:-5px; height:17px; bottom:5px; background:var(--yellow); z-index:-1; border-radius:5px; transform:rotate(-1.3deg); }
+    .hero-sub { max-width:590px; font-size:17px; line-height:1.95; color:var(--sub); margin-bottom:33px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:11px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 23px; min-height:50px; border:1px solid transparent; border-radius:13px; font-weight:800; font-size:14px; transition:transform .18s,box-shadow .18s,background .18s; cursor:pointer; }
+    .btn:hover { transform:translateY(-3px); }
+    .btn:active { transform:translateY(0) scale(.98); }
+    .btn-primary { background:var(--yellow); color:#252116; box-shadow:0 9px 25px #f3c3393d; }
+    .btn-primary:hover { background:#ffca30; box-shadow:0 12px 30px #f3c33955; }
+    .btn-outline { border-color:var(--line); background:#fff; }
+    .btn-outline:hover { border-color:#c7b76a; }
+    .hero-visual { min-height:405px; position:relative; display:grid; place-items:center; }
+    .orb { width:min(100%,345px); aspect-ratio:1; background:var(--yellow); border-radius:47% 53% 58% 42%/45% 45% 55% 55%; position:relative; display:grid; place-items:center; transform:rotate(-8deg); box-shadow:25px 30px 0 #efece1; }
+    .orb-inner { width:73%; aspect-ratio:1; border:2px solid #342d1930; border-radius:50%; display:grid; place-items:center; transform:rotate(8deg); }
+    .monogram { font-size:clamp(90px,10vw,138px); letter-spacing:-13px; line-height:1; font-weight:900; color:#28271e; padding-right:12px; }
+    .floating-note { position:absolute; right:-15px; bottom:18px; padding:16px 19px; background:#fff; border:1px solid var(--line); box-shadow:0 18px 45px #25251c16; border-radius:16px; transform:rotate(4deg); font-size:13px; font-weight:700; }
+    .floating-note span { color:#a18211; display:block; font-size:11px; letter-spacing:1.1px; margin-bottom:3px; }
+    .spark { position:absolute; top:20px; right:30px; font-size:42px; color:#e7b82b; }
+    .divider { border:0; border-top:1px solid var(--line); margin:0; }
+    section.section { padding:94px 0; scroll-margin-top:85px; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:33px; }
+    .section-label { color:#a18211; font-size:12px; font-weight:850; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+    .section-head h2 { font-size:clamp(29px,3vw,39px); letter-spacing:-1.8px; line-height:1.3; margin:0; }
+    .section-note { font-size:13px; color:var(--sub); max-width:300px; margin:0; }
+    .about-grid { display:grid; grid-template-columns:1.07fr .93fr; gap:19px; }
+    .panel { padding:33px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); }
+    .about-main { background:#292a24; color:#fff; border-color:#292a24; min-height:275px; display:flex; flex-direction:column; justify-content:space-between; }
+    .about-main .symbol { color:var(--yellow); font-size:46px; line-height:1; font-weight:900; }
+    .about-main h3 { font-size:27px; letter-spacing:-1px; line-height:1.4; margin:20px 0 14px; }
+    .about-main p { margin:0; color:#cbcabe; font-size:14px; line-height:1.9; }
+    .info-list { display:grid; gap:20px; }
+    .info-row { display:grid; grid-template-columns:96px 1fr; gap:18px; padding-bottom:19px; border-bottom:1px solid var(--line); font-size:14px; }
+    .info-row:last-child { border:0; padding:0; }
+    .info-row strong { color:#77736b; font-size:13px; }
+    .info-row span { font-weight:750; }
+    .work-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
+    .work-card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:29px 25px 31px; transition:transform .2s,border-color .2s,box-shadow .2s; }
+    .work-card:hover { transform:translateY(-5px); border-color:#ebc756; box-shadow:0 14px 34px #27231a09; }
+    .work-icon { display:grid; place-items:center; width:50px; height:50px; background:#fff3c9; border-radius:14px; font-size:24px; margin-bottom:25px; }
+    .work-num { color:#b1a892; font-size:11px; font-weight:850; letter-spacing:2px; }
+    .work-card h3 { font-size:20px; letter-spacing:-.7px; margin:9px 0; }
+    .work-card p { margin:0; color:var(--sub); font-size:14px; line-height:1.85; }
+    .career-box { background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:14px 32px; }
+    .career-item { display:grid; grid-template-columns:172px 1fr; gap:27px; padding:30px 0; border-bottom:1px solid var(--line); }
+    .career-item:last-child { border-bottom:none; }
+    .career-time { font-size:13px; font-weight:850; color:#a18321; }
+    .career-item h3 { font-size:19px; letter-spacing:-.5px; margin:0 0 7px; }
+    .career-item p { color:var(--sub); font-size:14px; margin:0; }
+    .project-section { background:#f4f1e7; }
+    .projects { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
+    .project { display:flex; flex-direction:column; padding:26px; border:1px solid #e7e0cc; background:#fffefa; border-radius:var(--radius); transition:transform .2s,box-shadow .2s,border-color .2s; min-height:264px; }
+    .project:hover { transform:translateY(-6px); box-shadow:0 17px 33px #2d281013; border-color:#e7bd37; }
+    .project:active { transform:translateY(-1px) scale(.99); }
+    .project-top { display:flex; justify-content:space-between; align-items:center; }
+    .project-number { display:grid; place-items:center; width:47px; height:47px; border-radius:14px; background:var(--yellow); color:#2e2817; font-size:23px; font-weight:900; }
+    .project-arrow { font-size:24px; transition:transform .2s; }
+    .project:hover .project-arrow { transform:translate(3px,-3px); }
+    .project-body { margin-top:auto; padding-top:35px; }
+    .project-body small { color:#988b69; font-size:11px; font-weight:850; letter-spacing:1.7px; }
+    .project-body h3 { font-size:23px; letter-spacing:-.7px; margin:5px 0 7px; }
+    .project-body p { font-size:13px; color:var(--sub); margin:0; }
+    .contact { text-align:center; padding:93px 25px; background:#292a24; color:white; border-radius:29px; }
+    .contact .section-label { color:var(--yellow); }
+    .contact h2 { font-size:clamp(28px,3.7vw,44px); letter-spacing:-1.6px; margin:0 0 16px; }
+    .contact p { font-size:15px; color:#c9c9be; margin:0 0 27px; }
+    .contact .btn { background:var(--yellow); }
+    footer { padding:30px 0 39px; display:flex; justify-content:space-between; align-items:center; gap:15px; font-size:12px; color:#8c897d; }
+    .editable-note { font-size:12px; color:#83795e; display:inline-flex; align-items:center; gap:6px; padding:9px 12px; background:#fff7dc; border:1px solid #f1e7c2; border-radius:9px; margin-top:16px; }
+    :focus-visible { outline:3px solid #d99e0b; outline-offset:4px; }
+    @media(max-width:900px) { .hero-grid { gap:24px; } .hero-visual { min-height:330px; } .orb { max-width:285px; } .work-grid,.projects { gap:12px; } .work-card,.project { padding:23px 20px; } }
+    @media(max-width:700px) { .wrap { width:min(100% - 36px,520px); } .nav { min-height:68px; } .logo { font-size:15px; } .navlinks { gap:12px; } .navlinks a:not(.nav-cta) { display:none; } .nav-cta { font-size:12px; padding:9px 13px; } .hero { padding:66px 0 69px; } .hero-grid { grid-template-columns:1fr; } h1 { letter-spacing:-2.7px; } .hero-sub { font-size:15px; } .hero-visual { min-height:275px; margin:18px 0 0; } .orb { max-width:245px; box-shadow:15px 19px 0 #efece1; } .monogram { font-size:95px; } .floating-note { bottom:0; right:0; } section.section { padding:68px 0; } .section-head { display:block; } .section-note { margin-top:12px; } .about-grid,.work-grid,.projects { grid-template-columns:1fr; } .panel { padding:26px; } .about-main { min-height:230px; } .work-card { min-height:0; } .work-icon { margin-bottom:17px; } .career-box { padding:4px 22px; } .career-item { grid-template-columns:1fr; gap:8px; padding:23px 0; } .project { min-height:205px; } .project-body { padding-top:23px; } .contact { padding:69px 20px; border-radius:22px; } footer { flex-direction:column; align-items:flex-start; } }
+    @media(prefers-reduced-motion:reduce) { *,*:before,*:after { scroll-behavior:auto !important; transition:none !important; animation:none !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="wrap nav" aria-label="주 메뉴">
+      <a class="logo" href="#home" aria-label="포트폴리오 홈"><span class="logo-mark">P.</span><span>MY PORTFOLIO</span></a>
+      <div class="navlinks"><a href="#about">소개</a><a href="#work">담당 업무</a><a href="#career">경력</a><a href="#projects">프로젝트</a><a class="nav-cta" href="#contact">CONTACT ↗</a></div>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">WELCOME TO 이경희 포트폴리오</div>
+          <h1>생각을 <span class="highlight">기획</span>으로,<br />기획을 <span class="highlight">가치</span>로.</h1>
+          <p class="hero-sub">안녕하세요. 교육과 업무의 더 나은 경험을 고민하는 <strong>포트폴리오 주인공</strong>입니다. 작은 아이디어를 실질적인 변화로 연결하는 과정을 중요하게 생각합니다.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#projects">프로젝트 살펴보기 <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#about">저에 대해 알아보기 <span aria-hidden="true">↓</span></a></div>
+          <div class="editable-note">✎ 이름·담당 업무·경력은 아래 안내에 따라 수정하세요.</div>
+        </div>
+        <div class="hero-visual" aria-label="이니셜을 활용한 노란색 그래픽">
+          <span class="spark" aria-hidden="true">✳</span>
+          <div class="orb"><div class="orb-inner"><span class="monogram">P.</span></div></div>
+          <div class="floating-note"><span>MY APPROACH</span>Plan · Connect · Grow ✦</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-label">01 / ABOUT ME</p><h2>저를 소개합니다.</h2></div><p class="section-note">관심 분야와 일하는 방식을 한눈에 확인해 보세요.</p></div>
+        <div class="about-grid">
+          <div class="panel about-main"><div class="symbol" aria-hidden="true">✳</div><div><h3>더 나은 교육 경험을 위해<br />질문하고, 기획하고, 연결합니다.</h3><p>실무의 문제를 발견하고, 협업을 통해 해결 방향을 만들어가는 데 관심이 있습니다.</p></div></div>
+          <div class="panel"><div class="info-list"><div class="info-row"><strong>이름</strong><span>이름 입력</span></div><div class="info-row"><strong>소속</strong><span>첨단교육팀</span></div><div class="info-row"><strong>직무</strong><span>담당 직무 입력</span></div><div class="info-row"><strong>관심 분야</strong><span>교육 기획 · 디지털 도구 · 업무 개선</span></div><div class="info-row"><strong>키워드</strong><span>#기획 #협업 #실행 #성장</span></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-label">02 / WHAT I DO</p><h2>담당 업무</h2></div><p class="section-note">아래 3가지는 수정 가능한 예시 항목입니다. 실제 담당 업무로 교체하세요.</p></div>
+        <div class="work-grid">
+          <article class="work-card"><div class="work-icon" aria-hidden="true">✎</div><span class="work-num">FOCUS 01</span><h3>교육 프로그램 기획</h3><p>교육 수요와 목적을 분석하고 프로그램 구성 및 운영 방안을 설계합니다.</p></article>
+          <article class="work-card"><div class="work-icon" aria-hidden="true">▦</div><span class="work-num">FOCUS 02</span><h3>프로젝트 운영·협업</h3><p>업무 일정과 진행 현황을 관리하고 관계자 간 협업을 지원합니다.</p></article>
+          <article class="work-card"><div class="work-icon" aria-hidden="true">↗</div><span class="work-num">FOCUS 03</span><h3>업무 개선·디지털 활용</h3><p>반복 업무를 점검하고 데이터와 디지털 도구를 활용한 개선 방법을 탐색합니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+    <section class="section" id="career">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-label">03 / EXPERIENCE</p><h2>주요 경력</h2></div><p class="section-note">확인되지 않은 경력은 기재하지 않고 입력용 예시를 넣었습니다.</p></div>
+        <div class="career-box">
+          <div class="career-item"><div class="career-time">20XX — 현재</div><div><h3>첨단교육팀 · 직책 입력</h3><p>담당 사업 및 주요 성과를 1~2문장으로 작성해 주세요.</p></div></div>
+          <div class="career-item"><div class="career-time">20XX — 20XX</div><div><h3>이전 소속 또는 주요 프로젝트</h3><p>수행 역할과 프로젝트 결과를 간략히 작성해 주세요.</p></div></div>
+          <div class="career-item"><div class="career-time">20XX</div><div><h3>주요 교육·자격·수상 경력</h3><p>강점과 전문성을 보여주는 이력을 추가해 주세요.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section project-section" id="projects">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-label">04 / SELECTED WORK</p><h2>프로젝트 바로가기</h2></div><p class="section-note">각 버튼은 향후 제작할 개별 HTML 페이지로 이동합니다.</p></div>
+        <div class="projects">
+          <a class="project" href="1.html" aria-label="프로젝트 1, 1.html로 이동"><div class="project-top"><span class="project-number">1</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="project-body"><small>PROJECT 01</small><h3>첫 번째 프로젝트</h3><p>1.html 페이지로 이동합니다.</p></div></a>
+          <a class="project" href="2.html" aria-label="프로젝트 2, 2.html로 이동"><div class="project-top"><span class="project-number">2</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="project-body"><small>PROJECT 02</small><h3>두 번째 프로젝트</h3><p>2.html 페이지로 이동합니다.</p></div></a>
+          <a class="project" href="3.html" aria-label="프로젝트 3, 3.html로 이동"><div class="project-top"><span class="project-number">3</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="project-body"><small>PROJECT 03</small><h3>세 번째 프로젝트</h3><p>3.html 페이지로 이동합니다.</p></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap"><div class="contact"><p class="section-label">LET'S CONNECT</p><h2>좋은 아이디어는 대화에서 시작됩니다.</h2><p>새로운 제안과 협업에 관한 이야기를 나누고 싶습니다.</p><button type="button" class="btn" id="copyEmail" data-email="your-email@example.com">이메일 주소 복사 ↗</button><div id="copyStatus" role="status" aria-live="polite" style="font-size:12px;color:#e8d999;margin-top:13px;min-height:19px">이메일은 본인의 주소로 수정해 주세요.</div></div></div>
+    </section>
+  </main>
+
+  <footer class="wrap"><span>© <span id="year">2026</span> MY PORTFOLIO. All rights reserved.</span><span>Made with intention and a little yellow ✳</span></footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const copyButton = document.getElementById('copyEmail');
+    const status = document.getElementById('copyStatus');
+    copyButton.addEventListener('click', async () => {
+      const email = copyButton.dataset.email;
+      if (email === 'your-email@example.com') { status.textContent = 'HTML 파일에서 data-email 값을 실제 이메일로 변경해 주세요.'; return; }
+      try { await navigator.clipboard.writeText(email); status.textContent = '이메일 주소가 복사되었습니다!'; copyButton.textContent = '복사 완료 ✓'; }
+      catch (error) { status.textContent = '이메일 주소: ' + email; }
+    });
+  </script>
+</body>
+</html>
